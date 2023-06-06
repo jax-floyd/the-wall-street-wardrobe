@@ -47,13 +47,17 @@ const Home = () => {
     photos.sort(() => Math.random() - 0.5);
 
     return (
-        <div class="max-w-8xl mx-auto px-12">
+        <div class="max-w-8xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12">
                 {photos && photos.length > 0 && photos.map((photo, index) => {
+                    const imageStyle = {
+                        backgroundImage: `url(${require(`../assets/photos/${photo}`)})`,
+                        backgroundSize: 'cover',
+                        paddingBottom: '150%', // Set the aspect ratio (1:1 for square images)
+                        backgroundPosition: 'center center',
+                    };
                     return (
-                        <div key={index}>
-                            <img src={require(`../assets/photos/${photo}`)} alt="" />
-                        </div>
+                        <div key={index} style={imageStyle}></div>
                     );
                 })}
             </div>
